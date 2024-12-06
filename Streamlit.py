@@ -30,8 +30,8 @@ def writing_part():
             draw = ImageDraw.Draw(img)
 
             # Define font properties
-            font_path = r"C:\Users\SHREYASH\AppData\Local\Microsoft\Windows\Fonts\\NotoSansDevanagari-Black.ttf"
-            # font_path = r"NotoSansDevanagari-Black.ttf"
+            #font_path = r"C:\Users\SHREYASH\AppData\Local\Microsoft\Windows\Fonts\\NotoSansDevanagari-Black.ttf"
+            font_path = r"NotoSansDevanagari-Black.ttf"
             font_size = 45
             position = (2400, 455)  # Adjust based on image dimensions
             text_color = (128, 65, 85)  # Color of the text
