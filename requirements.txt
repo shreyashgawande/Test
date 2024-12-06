@@ -53,3 +53,4 @@ uvicorn==0.30.6
 webdriver-manager==4.0.2
 wheel==0.43.0
 wsproto==1.2.0
+streamlit 
