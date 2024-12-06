@@ -4,6 +4,9 @@ import pillow_heif  # Enable HEIC support in Pillow
 from googletrans import Translator
 import os
 
+import warnings
+warnings.filterwarnings("ignore")
+
 # Ensure pillow-heif is registered
 pillow_heif.register_heif_opener()
 
