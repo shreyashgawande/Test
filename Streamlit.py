@@ -3,10 +3,8 @@ from PIL import Image, ImageDraw, ImageFont
 import pillow_heif  # Enable HEIC support in Pillow
 from googletrans import Translator
 import os
-
 import warnings
 warnings.filterwarnings("ignore")
-
 # Ensure pillow-heif is registered
 pillow_heif.register_heif_opener()
 
@@ -32,8 +30,8 @@ def writing_part():
             draw = ImageDraw.Draw(img)
 
             # Define font properties
-            #font_path = r"C:\Users\SHREYASH\AppData\Local\Microsoft\Windows\Fonts\\NotoSansDevanagari-Black.ttf"
-            font_path = r"NotoSansDevanagari-Black.ttf"
+            font_path = r"C:\Users\SHREYASH\AppData\Local\Microsoft\Windows\Fonts\\NotoSansDevanagari-Black.ttf"
+            # font_path = r"NotoSansDevanagari-Black.ttf"
             font_size = 45
             position = (2400, 455)  # Adjust based on image dimensions
             text_color = (128, 65, 85)  # Color of the text
@@ -66,9 +64,9 @@ def writing_part():
 
             # Option to download the modified image
             if st.session_state.input_text:
-                output_path = st.session_state.input_text+"_invitaion.pdf"
+                output_path = st.session_state.input_text+"_invitation.pdf"
             else :
-                output_path = st.session_state.marathi_text+"_invitaion.pdf"
+                output_path = st.session_state.marathi_text+"_invitation.pdf"
             images = [img1, img]  # Replace img1 and img2 with your actual image objects
 
             images[0].save(
@@ -81,7 +79,7 @@ def writing_part():
             # img.save("Output.pdf","PDF")
             with open(output_path, "rb") as file:
                 btn = st.download_button(
-                    label="Download invitaion pdf",
+                    label="Download invitation pdf",
                     data=file,
                     file_name=output_path,
                     mime="application/pdf"
@@ -96,6 +94,8 @@ if "input_text" not in st.session_state  :
     st.session_state.input_text = ""
 if "marathi_text" not in st.session_state  :
     st.session_state.marathi_text = ""
+if "villege_text" not in st.session_state  :
+    st.session_state.villege_text = ""
 if "villege" not in st.session_state  :
     st.session_state.villege = ""
 if "not_coorrect_filter" not in st.session_state  :
@@ -110,7 +110,8 @@ if  st.session_state.not_coorrect_filter:
 
     if st.session_state.input_text and st.session_state.villege:
         st.session_state.marathi_text = convert_to_marathi(st.session_state.input_text)
-        st.session_state.villege_text = convert_to_marathi(st.session_state.villege)
+        if len(st.session_state.villege.strip()):
+            st.session_state.villege_text = convert_to_marathi(st.session_state.villege)
 
         st.write(f"Translated Name Text: {st.session_state.marathi_text}")
         st.write(f"Translated Villege Text: {st.session_state.villege_text}")
@@ -129,3 +130,6 @@ if not st.session_state.not_coorrect_filter:
         if submit_btn : 
             writing_part()
             
+
+
+
